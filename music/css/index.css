@@ -1,0 +1,162 @@
+html{
+	height: 100%;
+}
+
+body{
+	margin: 0;
+	height: 100%;
+	background: radial-gradient(white,#888,#333);
+	overflow: hidden;
+}
+
+*{
+	box-sizing: border-box;
+}
+
+@keyframes rounding{
+	from{
+		transform: rotate(0);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+
+#cd{
+	width: 400px;
+	height: 400px;
+	border-radius: 50%;
+	background-size: 100% 100%;
+	border: solid 2px black;
+	position: absolute;
+	left: 50%;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	transition: left 0.4s linear; 
+	animation: rounding 20s linear infinite;
+}
+
+#cd:hover{
+	left: calc(50% + 200px);
+}
+
+#hole{
+	position: absolute;
+	margin: auto;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #9a9a9a;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	border: solid 4px white;
+}
+
+#list-box{
+	width: 250px;
+	height: 600px;
+	background: linear-gradient(white,#AFEEEE);
+	box-shadow: 0px 0px 10px #AFEEEE;
+	border-radius: 40px;
+	padding: 40px;
+	position: absolute;
+	left: 300px;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	overflow-y: auto;
+	list-style: none;
+}
+
+#list-box li{
+	margin: 10px 0;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+#list-box li:hover{
+	color: plum;
+}
+
+#main-box{
+	width: 500px;
+	height: 600px;
+	box-shadow: 0px 0px 10px #AFEEEE;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	border-radius: 40px;
+	overflow: hidden;
+}
+
+#lyric-box{
+	width: 517px;
+	height: 60%;
+	border-bottom: solid 1px #87CEEB;
+	background: linear-gradient(white 5%,#E0FFFF);
+	padding: 20px;
+	text-align: center;
+	overflow: auto;
+	
+}
+
+#progress-box{
+	height: 20%;
+	border-top: solid 1px #AFEEEE;
+	border-bottom: solid 1px #87CEEB;
+	background-color: #E0FFFF;
+}
+
+#control-box{
+	height: 20%;
+	background-color: #AFEEEE;
+	border-top: solid 1px #87CEEB;
+}
+
+#control-box span{
+	font-size: 64px;
+	cursor: pointer;
+}
+
+#control-box span:hover{
+	text-shadow: 0 0 25px mediumpurple;
+}
+
+#control-box div{
+	position: relative;
+	top: 50%;
+	transform: translate(0,-50%);
+	text-align: center;
+}
+
+progress{
+	width: calc(100% - 20px);
+	position: relative;
+	top: 30%;
+	left: 10px;
+	cursor: pointer;
+}
+
+#progress-label{
+	position: relative;
+	top: 30%;
+	text-align: center;
+}
+
+#lyric-box p {
+	margin: 5px 0;
+	transition: font-size 0.3s linear;
+	cursor: pointer;
+}
+
+.higtlight-line{
+	font-size: 1.2em;
+	color: plum;
+	text-shadow: 0 0 5px skyblue;
+}

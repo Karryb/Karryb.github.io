@@ -17,12 +17,27 @@
 				animation: none !important;
 				-webkit-animation: none !important;
 			}
-			#info-panel{
-				background-color: white;
-			}
 			#self-head{
 				width: 3rem;
 				height: 3rem;
+				border-radius: 50%;
+				float: left;
+			}
+			#self-name{
+				float: left;
+			}
+			#bottom-menu{
+				font-size: 0.6rem;
+			}
+			#aside-menu{
+				height: 12rem;
+				overflow-y: scroll;
+			}
+			#friend-list{
+				margin: 0;
+			}
+			#friend-list .item-media img{
+				border-radius: 50%;
 			}
 		</style>
 	</head>
@@ -57,12 +72,68 @@
 						<span class="tab-label">动态</span>
 					</a>
 				</nav>
-
+				
+				<!--搜索栏-->
+				<div class="bar bar-header-secondary">
+				  <div class="searchbar">
+				    <a class="searchbar-cancel">取消</a>
+				    <div class="search-input">
+				      <label class="icon icon-search" for="search"></label>
+				      <input type="search" id='search' placeholder='输入关键字...'/>
+				    </div>
+				  </div>
+				</div>
+				
 				<!--内容区-->
 				<div class="content close-panel">
-					<div class="content-block">
-						这里是好友列表
-					</div>
+					<div class="list-block media-list" id="friend-list">
+				    <ul>
+				      <li>
+				        <div class="item-content">
+				          <div class="item-media"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" style='width: 2.2rem;'></div>
+				          <div class="item-inner">
+				            <div class="item-title-row">
+				              <div class="item-title">标题</div>
+				            </div>
+				            <div class="item-subtitle">子标题</div>
+				          </div>
+				        </div>
+				      </li>
+				      <li>
+				        <div class="item-content">
+				          <div class="item-media"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" style='width: 2.2rem;'></div>
+				          <div class="item-inner">
+				            <div class="item-title-row">
+				              <div class="item-title">标题</div>
+				            </div>
+				            <div class="item-subtitle">子标题</div>
+				          </div>
+				        </div>
+				      </li>
+				      <li>
+				        <div class="item-content">
+				          <div class="item-media"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" style='width: 2.2rem;'></div>
+				          <div class="item-inner">
+				            <div class="item-title-row">
+				              <div class="item-title">标题</div>
+				            </div>
+				            <div class="item-subtitle">子标题</div>
+				          </div>
+				        </div>
+				      </li>
+				      <li>
+				        <div class="item-content">
+				          <div class="item-media"><img src="http://gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i3/TB10LfcHFXXXXXKXpXXXXXXXXXX_!!0-item_pic.jpg_250x250q60.jpg" style='width: 2.2rem;'></div>
+				          <div class="item-inner">
+				            <div class="item-title-row">
+				              <div class="item-title">标题</div>
+				            </div>
+				            <div class="item-subtitle">子标题</div>
+				          </div>
+				        </div>
+				      </li>
+				    </ul>
+				  </div>
 				</div>
 			</div>
 
@@ -90,8 +161,40 @@
 				</nav>
 
 				<div class="content">
-					<div class="content-block">
-						这里是联系人页面
+					<div class="list-block contacts-block">
+				    <div class="list-group">
+				      <ul>
+				        <li onclick="openclose(event)" class="list-group-title">A</li>
+				        <li>
+				          <div class="item-content">
+				            <div class="item-inner">
+				              <div class="item-title">标题1</div>
+				            </div>
+				          </div>
+				        </li>
+				        <li>
+				          <div class="item-content">
+				            <div class="item-inner">
+				              <div class="item-title">标题2</div>
+				            </div>
+				          </div>
+				        </li>
+				        <li>
+				          <div class="item-content">
+				            <div class="item-inner">
+				              <div class="item-title">标题3</div>
+				            </div>
+				          </div>
+				        </li>
+				        <li>
+				          <div class="item-content">
+				            <div class="item-inner">
+				              <div class="item-title">标题4</div>
+				            </div>
+				          </div>
+				        </li>
+				      </ul>
+				    </div>
 					</div>
 				</div>
 			</div>
@@ -127,11 +230,92 @@
 			</div>
 			
 			<!--侧边栏-->
-			<div class="panel panel-left panel-reveal" id="info-panel">
+			<div class="theme-white panel panel-left panel-reveal" id="info-panel">
 				<div class="content-block">
-					<div class="self-info">
+					<!--个人信息-->
+					<div id="self-info">
 						<img id="self-head" src="img/karry.jpg"/>
+						<span id="self-name">我的昵称</span>
+						<br />
+						<div id="self-level"></div>
+						<div style="clear: both;"></div>
+						<p>今天捡了100块钱</p>
 					</div>
+					
+					<!--菜单列表-->
+					<div class="list-block" id="aside-menu">
+						<ul>
+							<li class="item-content">
+								<div class="item-media">
+									<i class="icon icon-gift"></i>
+								</div>
+								<div class="item-inner">
+									<div class="item-title">了解会员特权</div>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-media">
+									<i class="icon icon-cart"></i>
+								</div>
+								<div class="item-inner">
+									<div class="item-title">QQ钱包</div>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-media">
+									<i class="icon icon-edit"></i>
+								</div>
+								<div class="item-inner">
+									<div class="item-title">个性装扮</div>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-media">
+									<i class="icon icon-star"></i>
+								</div>
+								<div class="item-inner">
+									<div class="item-title">我的收藏</div>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-media">
+									<i class="icon icon-picture"></i>
+								</div>
+								<div class="item-inner">
+									<div class="item-title">我的相册</div>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-media">
+									<i class="icon icon-download"></i>
+								</div>
+								<div class="item-inner">
+									<div class="item-title">我的文件</div>
+								</div>
+							</li>
+							<li class="item-content">
+								<div class="item-media">
+									<i class="icon icon-card"></i>
+								</div>
+								<div class="item-inner">
+									<div class="item-title">我的名片夹</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					
+					<div class="row" id="bottom-menu">
+						<div class="col-33">
+							<a class="button-link"><i class="icon icon-settings"></i>设置</a>
+						</div>
+						<div class="col-33">
+							<a id="night-shift-btn" class="button-link"><i class="icon icon-star"></i>夜间</a>
+						</div>
+						<div class="col-33">
+							<a class="button-link">郑州<sup>18℃</sup></a>
+						</div>
+					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -156,8 +340,59 @@
 			document.title = "动态";
 		});
 		
+		var myLevel = 50;
+		function refreshLevel (level) {
+			var levArray = [];
+			while (level/4>=1){
+				var remainder = level%4;
+				levArray.unshift(remainder);
+				level = Math.floor(level/4);
+			}
+			levArray.unshift(level);
+			
+			for (var i = 0;i<levArray.length;i++) {
+				var picName;
+				switch (levArray.length-i){
+					case 3:
+						picName = "sun.png";
+						break;
+					case 2:
+						picName = "moon.png";
+						break;
+					case 1:
+						picName = "star.png";
+						break;
+					default:
+						break;
+				}
+				for (var j = 0;j<levArray[i];j++) {
+					$("<img />")
+					.attr("src","img/"+picName)
+					.css("width","0.8rem")
+					.css("height","0.8rem")
+					.appendTo($("#self-level"));
+				}
+			}
+		}
+		refreshLevel(52);
 		
+		//切换夜间模式
+		$("#night-shift-btn").click(function () {
+			$(document.body).toggleClass("theme-dark");
+			$("#info-panel").toggleClass("theme-white")
+		})
 		
+		function openclose (e) {
+			if (e.target.isOpen) {
+				$(e.target).nextAll("li")
+				.css("display","none");
+				e.target.isOpen = false;
+			}else{
+				$(e.target).nextAll("li")
+				.css("display","block");
+				e.target.isOpen = true;
+			}
+		}
 		
 		//初始化SUI
 		$.init();
